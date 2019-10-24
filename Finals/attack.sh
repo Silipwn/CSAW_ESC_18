@@ -1,7 +1,11 @@
 #!/bin/bash
-# **Work in Progress**
-function ble_init 
-    {
+# File              : attack.sh
+# Author            : silipwn <c2lsaXB3bmVkQGdtYWlsLmNvbQ==>
+# Date              : 04.08.2018
+# Last Modified Date: 24.10.2019
+# Last Modified By  : silipwn <c2lsaXB3bmVkQGdtYWlsLmNvbQ==>
+function ble_init # Function for the initialization the communication 
+{
        echo -e "\nDump interrupted"
        grep -B2 'LL Data PDU' dump | awk '/AA/ {print $4}' > val
        awk '/CRC/ {print $2$3$4}' dump > crc
@@ -22,7 +26,7 @@ function ble_init
        echo $crc
        trans
    }
-function trans
+function trans # Function for terminating the connection 
     {
         for i in `seq 0 38`;
         do 
